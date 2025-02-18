@@ -23,7 +23,6 @@ class CalculatorScreen extends StatefulWidget {
 class _CalculatorScreenState extends State<CalculatorScreen> {
   String expression = "";
   String result = "0";
-  List<String> history = [];
 
   void onButtonPressed(String value) {
     setState(() {
@@ -37,7 +36,6 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
           ContextModel cm = ContextModel();
           double eval = exp.evaluate(EvaluationType.REAL, cm);
           result = eval.toString();
-          history.add("$expression = $result");
         } catch (e) {
           result = "Error";
         }
@@ -62,7 +60,7 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Flutter Calculator")),
+      appBar: AppBar(title: Text("계산기 앱")),
       body: Column(
         children: [
           Expanded(
